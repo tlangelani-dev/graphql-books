@@ -1,1 +1,1 @@
-# GraphQL Crash Course
+# GraphQL Books
