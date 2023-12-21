@@ -9,11 +9,23 @@ const resolvers = {
         books() {
             return db.books;
         },
+        book(_, args) {
+            const id = parseInt(args.id);
+            return db.books.find(book => book.id === id);
+        },
         reviews() {
             return db.reviews;
         },
+        review(_, args) {
+            const id = parseInt(args.id);
+            return db.reviews.find(review => review.id === id);
+        },
         authors() {
             return db.authors;
+        },
+        author(_, args) {
+            const id = parseInt(args.id);
+            return db.authors.find(author => author.id === id);
         }
     }
 }
