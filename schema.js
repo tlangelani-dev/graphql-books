@@ -4,11 +4,14 @@ export const typeDefs = `#graphql
         title: String!
         isbn: String!
         year: Int!
+        reviews: [Review!]
     }
     type Review {
         id: ID!
         rating: Int!
         content: String!
+        book: Book!
+        author: Author!
     }
     type Author {
         id: ID!
