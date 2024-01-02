@@ -17,13 +17,14 @@ export const typeDefs = `#graphql
         id: ID!
         name: String!,
         verified: Boolean!
+        reviews: [Review]
     }
     type Query {
         reviews: [Review]
-        review(id: ID): Review
+        review(id: ID!): Review
         books: [Book]
-        book(id: ID): Book
+        book(id: ID!): Book
         authors: [Author]
-        author(id: ID): Author
+        author(id: ID!): Author
     }
 `

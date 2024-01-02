@@ -27,6 +27,28 @@ const resolvers = {
             const id = parseInt(args.id);
             return db.authors.find(author => author.id === id);
         }
+    },
+    Book: {
+        reviews(parent) {
+            const id = parseInt(parent.id);
+            return db.reviews.filter(review => review.book_id == id);
+        }
+    },
+    Author: {
+        reviews(parent) {
+            const id = parseInt(parent.id);
+            return db.reviews.filter(review => review.author_id == id);
+        }
+    },
+    Review: {
+        book(parent) {
+            const bookId = parseInt(parent.book_id);
+            return db.books.find(book => book.id === bookId);
+        },
+        author(parent) {
+            const authorId = parseInt(parent.author_id);
+            return db.authors.find(author => author.id === authorId);
+        }
     }
 }
 
