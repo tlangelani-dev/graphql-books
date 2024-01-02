@@ -28,6 +28,34 @@ const resolvers = {
             return db.authors.find(author => author.id === id);
         }
     },
+    Mutation: {
+        addBook(_, args) {
+            let book = {
+                id: Math.floor(Math.random() * 10000).toString(),
+                ...args.book
+            };
+            db.books.push(book);
+
+            return book;
+        },
+        deleteBook(_, args) {
+            const id = parseInt(args.id);
+            return db.books.filter(book => book.id !== id);
+        },
+        updateBook(_, args) {
+            const id = parseInt(args.id);
+            db.books = db.books.map(book => {
+                if (book.id === id) {
+                    return {
+                        ...book,
+                        ...args.payload
+                    }
+                }
+
+                return book;
+            });
+        }
+    },
     Book: {
         reviews(parent) {
             const id = parseInt(parent.id);
